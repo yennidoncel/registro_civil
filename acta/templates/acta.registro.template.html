@@ -1,0 +1,96 @@
+{% extends 'base.template.html' %}
+{% load i18n %}
+{% block content_header_title %}{% trans 'Acta de Defunción' %}{% endblock %}
+{% block contenido %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="text-left">{% if not form.instance.pk %}{% trans 'Registrar' %}{% else %}{% trans 'Actualizar' %}{% endif %}</h4>
+        </div>
+
+        <div class="panel-body">
+            <form action="" role="form" class="form form-horizontal validate-form" method="post" autocomplete="off">
+{% csrf_token %}
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        <div class="form-group {% if form.numero_acta.errors %}has-error{% endif %}">
+                            <label class="col-md-3 col-xs-3 col-sm-3 control-label" for="{{ form.numero_acta.auto_id }}">
+                                {{ form.numero_acta.label }}
+                            </label>
+                            <div class="col-md-9 col-xs-9 col-sm-9">
+                                <div class="form-inline">{{ form.numero_acta }}</div>
+                                {% include 'base.form.errors.html' with form_errors=form.numero_acta.errors col_title_error='col-sm-2' col_msg_error='col-sm-10' %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        <div class="form-group {% if form.numero_folio.errors %}has-error{% endif %}">
+                            <label class="col-md-3 col-xs-3 col-sm-3 control-label" for="{{ form.numero_folio.auto_id }}">
+                                {{ form.numero_folio.label }}
+                            </label>
+                            <div class="col-md-9 col-xs-9 col-sm-9">
+                                <div class="form-inline">{{ form.numero_folio }}</div>
+                                {% include 'base.form.errors.html' with form_errors=form.numero_folio.errors col_title_error='col-sm-2' col_msg_error='col-sm-10' %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        <div class="form-group {% if form.anho.errors %}has-error{% endif %}">
+                            <label class="col-md-3 col-xs-3 col-sm-3 control-label" for="{{ form.anho.auto_id }}">
+                                {{ form.anho.label }}
+                            </label>
+                            <div class="col-md-9 col-xs-9 col-sm-9">
+                                <div class="form-inline">{{ form.anho }}</div>
+                                {% include 'base.form.errors.html' with form_errors=form.anho.errors col_title_error='col-sm-2' col_msg_error='col-sm-10' %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        <div class="form-group {% if form.registrador_civil.errors %}has-error{% endif %}">
+                            <label class="col-md-3 col-xs-3 col-sm-3 control-label" for="{{ form.registrador_civil.auto_id }}">
+                                {{ form.registrador_civil.label }}
+                            </label>
+                            <div class="col-md-9 col-xs-9 col-sm-9">
+                                <div class="form-inline">{{ form.registrador_civil }} <a href="#"><i class="fa fa-plus" aria-hidden="true" style="cursor:pointer;"></i></a></div>
+                                {% include 'base.form.errors.html' with form_errors=form.registrador_civil.errors col_title_error='col-sm-2' col_msg_error='col-sm-10' %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        <div class="form-group {% if form.fallecido.errors %}has-error{% endif %}">
+                            <label class="col-md-3 col-xs-3 col-sm-3 control-label" for="{{ form.fallecido.auto_id }}">
+                                {{ form.fallecido.label }}
+                            </label>
+                            <div class="col-md-9 col-xs-9 col-sm-9">
+                                <div class="form-inline">{{ form.fallecido }} <a href="#"><i class="fa fa-plus" aria-hidden="true" style="cursor:pointer;"></i></a></div>
+                                {% include 'base.form.errors.html' with form_errors=form.fallecido.errors col_title_error='col-sm-2' col_msg_error='col-sm-10' %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        <div class="form-group {% if form.declarante.errors %}has-error{% endif %}">
+                            <label class="col-md-3 col-xs-3 col-sm-3 control-label" for="{{ form.declarante.auto_id }}">
+                                {{ form.declarante.label }}
+                            </label>
+                            <div class="col-md-9 col-xs-9 col-sm-9">
+                                <div class="form-inline">{{ form.declarante }} <a href="#"><i class="fa fa-plus" aria-hidden="true" style="cursor:pointer;"></i></a></div>
+                                {% include 'base.form.errors.html' with form_errors=form.declarante.errors col_title_error='col-sm-2' col_msg_error='col-sm-10' %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-right">
+                    <a href="{% url 'acta_defuncion' %}" class="btn btn-primary btn-sm">Atrás</a>
+                    <button type="reset" class="btn btn-primary btn-sm" data-toggle="tooltip">{% trans 'Limpiar' %}</button>
+                    <button type="submit" class="btn btn-primary btn-sm" data-toggle="tooltip">{% if not form.instance.pk %}{% trans 'Registrar' %}{% else %}{% trans 'Actualizar' %}{% endif %}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

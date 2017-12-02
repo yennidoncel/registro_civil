@@ -12,3 +12,13 @@ ESTADO_CIVIL = (
     ("DI",_("Divirciado(a)")),
     ("VI",_("Viudo(a)")),
 )
+
+NACIONALIDAD = (
+    ("V",_("Venezolano(a)")),
+    ("E",_("Extranjero(a)")),
+)
+
+TIPO_GACETA = (
+    ("M",_("Municipal")),
+    ("O",_("Oficial")),
+)
