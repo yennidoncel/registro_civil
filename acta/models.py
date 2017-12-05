@@ -61,11 +61,17 @@ class Fallecido(models.Model):
 
     persona = models.ForeignKey(Persona)
 
+    def __str__(self):
+        return self.persona.nombre + " " + self.persona.apellido + " " + self.persona.cedula
+
 class Autoridad(models.Model):
 
     numero_mpps = models.CharField(max_length=100)
 
     persona = models.ForeignKey(Persona)
+
+    def __str__(self):
+        return self.persona.nombre + " " + self.persona.apellido + " " + self.persona.cedula
 
 class Defuncion(models.Model):
 
@@ -80,6 +86,9 @@ class Defuncion(models.Model):
     direccion = models.CharField(max_length=200)
 
     autoridad = models.ForeignKey(Autoridad)
+
+    def __str__(self):
+        return str(self.fecha_hora) + " " + self.certificado_defuncion
 
 class Pareja(models.Model):
 
@@ -126,6 +135,9 @@ class Declarante(models.Model):
     direccion = models.CharField(max_length=200)
 
     persona = models.ForeignKey(Persona)
+
+    def __str__(self):
+        return self.persona.nombre + " " + self.persona.apellido + " " + self.persona.cedula
 
 class ActaDefuncion(models.Model):
 

@@ -42,3 +42,14 @@ class Parroquia(models.Model):
 
     def __str__(self):
         return self.nombre
+
+class Ciudad(models.Model):
+
+    ## Nombre de la Ciudad
+    nombre = models.CharField(max_length=50)
+
+    ## Estado en donde se encuentra ubicada la Ciudad
+    estado = models.ForeignKey(Estado)
+
+    def __str__(self):
+        return self.nombre

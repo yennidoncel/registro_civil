@@ -18,8 +18,8 @@ class CedulaField(forms.MultiValueField):
         }
 
         fields = (
-            ChoiceField(choices=NACIONALIDAD),
-            CharField(max_length=8)
+            forms.ChoiceField(choices=NACIONALIDAD),
+            forms.CharField(max_length=8)
         )
 
         label = _("Cédula de Identidad:")
